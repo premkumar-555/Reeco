@@ -27,12 +27,15 @@ const GlobalModal = ({ isOpen, onOpen, onClose, item}) => {
           <ModalHeader>Missing product</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6} fontWeight='600'>
-            is {`'${item.product_name}'`} is missing ?
+            is {`'${item?.product_name}'`} is missing ?
           </ModalBody>
 
           <ModalFooter>
             <Button onClick={onClose}>No</Button>
-            <Button onClick={() => {dispatch(updateProductDetails({id: item.id, key: 'status', value: 'missing'}))}}  ml={3}>
+            <Button onClick={() => {
+              dispatch(updateProductDetails({id: item?.id, key: 'status', value: 'missing'}));
+              onClose()
+            }}  ml={3}>
               Yes
             </Button>
           </ModalFooter>
