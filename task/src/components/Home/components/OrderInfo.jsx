@@ -1,16 +1,19 @@
 import React from 'react'
 import { Box, Text, Icon , Button, Grid, GridItem  } from '@chakra-ui/react'
 import {IoFastFoodOutline} from 'react-icons/io5'
+import { useSelector, useDispatch } from 'react-redux'
 const OrderInfo = () => {
+    const {order} = useSelector(state => state.order);
+    console.log(order)
   return (
     
     <Grid mt='15px' h='100px' maxW='100%' mx='100px' templateColumns='repeat(6, 1fr)' gap={6} border='1px solid lightgrey' bg='white' borderRadius='md' py='10px' px='30px' justifyContent='center' alignItems='center'>
-    <DynamicText value='East coast fruits & vegetables' title='Supplier'/>
-    <DynamicText value='East coast fruits & vegetables' title='Shipping date'/>
-    <DynamicText value='East coast fruits & vegetables' title='Total'/>
-    <DynamicText value='East coast fruits & vegetables' title='Category' showIcons={true}/>
-    <DynamicText value='East coast fruits & vegetables' title='Department'/>
-    <DynamicText value='East coast fruits & vegetables' title='Status' bdr='none'/>
+    <DynamicText value={order.supplier} title='Supplier'/>
+    <DynamicText value={order.shippling_date} title='Shipping date'/>
+    <DynamicText value={order.order_total} title='Total'/>
+    <DynamicText value={order.order_total} title='Category' showIcons={true}/>
+    <DynamicText value={order.department} title='Department'/>
+    <DynamicText value={order.status}title='Status' bdr='none'/>
     </Grid>
   )
 }
