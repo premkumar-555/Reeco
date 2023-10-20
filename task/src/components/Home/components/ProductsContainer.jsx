@@ -91,7 +91,7 @@ const ProductsTable = () => {
         <Box h='275px' overflowY='scroll' >
 
      {products && products.map((ele, ind) => (
-        <>
+        
          <Box key={ele.id} h='75px' borderBottom='2px solid lightgrey' display='flex'  justifyContent='space-between' alignItems='center'>
             <Box w='8%'  display='flex' justifyContent='center'>
                 <Image
@@ -127,7 +127,7 @@ const ProductsTable = () => {
               <Text _hover={{cursor: 'pointer'}} fontSize='sm' fontWeight='600'>Edit</Text>
              </Box>
         </Box>
-        </>
+        
      ))}
      <GlobalModal  isOpen={isOpen} onOpen={onOpen} onClose={onClose} item={selectedItem}/>
         </Box>
