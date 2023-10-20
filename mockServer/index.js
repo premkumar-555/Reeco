@@ -6,12 +6,12 @@ const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
 server.use(middleWares);
-server.use(jsonServer.bodyParser)
+server.use(jsonSever.bodyParser)
 server.use(router);
 server.listen(PORT, async(req, res) => {
     try {
         console.log('JSON Server is running on PORT ', PORT)
     } catch (error) {
-        
+        console.log(error)
     }
 })
