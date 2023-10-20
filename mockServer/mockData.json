@@ -1,0 +1,71 @@
+{
+    "orders": [
+        {
+            "id": 1,
+            "order_no": "324547ABC",
+            "supplier": "East coast fruits & vegetables",
+            "shippling_date": "Fri Oct 20 2023",
+            "order_total": 15028.3,
+            "category": "food",
+            "department": "300-444-678",
+            "status": "awaiting your approvel",
+            "products": [
+                {
+                    "id": 1,
+                    "product_name": "Chicken Breast Fillets, Boneless matuu maMarinated 6 Ounce Raw, invivid",
+                    "brand": "Hormel Black Labelmany",
+                    "price": 60.67,
+                    "qty_unit": "6*1LB",
+                    "price_unit": "$",
+                    "quantity": 0,
+                    "total_cost": 0,
+                    "status": null
+                },
+                {
+                    "id": 2,
+                    "product_name": "Chicken Breast Fillets, Boneless matuu maMarinated 6 Ounce Raw, invivid",
+                    "brand": "Hormel Black Labelmany",
+                    "price": 60.67,
+                    "qty_unit": "6*1LB",
+                    "price_unit": "$",
+                    "quantity": 15,
+                    "total_cost": 9000.88,
+                    "status": null
+                },
+                {
+                    "id": 3,
+                    "product_name": "Chicken Breast Fillets, Boneless matuu maMarinated 6 Ounce Raw, invivid",
+                    "brand": "Hormel Black Labelmany",
+                    "price": 60.67,
+                    "qty_unit": "6*1LB",
+                    "price_unit": "$",
+                    "quantity": 15,
+                    "total_cost": 9000.88,
+                    "status": null
+                },
+                {
+                    "id": 4,
+                    "product_name": "Chicken Breast Fillets, Boneless matuu maMarinated 6 Ounce Raw, invivid",
+                    "brand": "Hormel Black Labelmany",
+                    "price": 60.67,
+                    "qty_unit": "6*1LB",
+                    "price_unit": "$",
+                    "quantity": 0,
+                    "total_cost": 0,
+                    "status": null
+                },
+                {
+                    "id": 5,
+                    "product_name": "Chicken Breast Fillets, Boneless matuu maMarinated 6 Ounce Raw, invivid",
+                    "brand": "Hormel Black Labelmany",
+                    "price": 60.67,
+                    "qty_unit": "6*1LB",
+                    "price_unit": "$",
+                    "quantity": 13,
+                    "total_cost": 12654.32,
+                    "status": null
+                }
+            ]
+        }
+    ]
+}
