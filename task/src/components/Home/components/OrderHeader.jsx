@@ -14,12 +14,10 @@ const OrderHeader = () => {
  const {order} = useSelector((state) =>(state.order)) 
  const handleApprove = () => {
   const curDate = (new Date()).toString().slice(0, 15);
+
   if(order.shippling_date === curDate && order.status.includes('awaiting your approvel')){
-    dispatch(approveOrder('awaiting your approvel'));
-    <Alert status='success'>
-    <AlertIcon />
-    Order has been approved
-  </Alert>;
+    dispatch(approveOrder('Approved'));
+    alert('Order has been approved');
   }
  }
   return (
@@ -48,7 +46,7 @@ const OrderHeader = () => {
        <Button size='sm' borderRadius='full' border='1px solid #1B5E20' bg='white' color='#1B5E20'>
         Back
        </Button>
-       <Button onClick={() => handleApprove()} size='sm' border='1px solid #1B5E20' borderRadius='full' bg='#1B5E20' color='white' _hover={{background: 'white', color:'#1B5E20', border:'1px solid #1B5E20'}}>
+       <Button onClick={() => handleApprove()} size='sm' border='1px solid #1B5E20' borderRadius='full' bg='#1B5E20' color='white' _hover={{background: 'white', color:'#1B5E20', border:'1px solid #1B5E20', cursor: `${order.status !== 'Approved'?'pointer' : 'not-allowed'}`}}>
         Approve order
      </Button>
       </Box>

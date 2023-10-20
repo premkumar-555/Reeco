@@ -24,6 +24,7 @@ import {RxCross2} from 'react-icons/rx'
 import {AiOutlineCheck} from 'react-icons/ai'
 const ProductsContainer = () => {
     const {products} = useSelector(state => state.order.order);
+   
   return (
     <Box h='375px' mt='15px'  maxW='100%' mx='100px' borderRadius='md' border='1px solid lightgrey' bg='white' py='10px' px='30px'>
     <Box display='flex' justifyContent='space-between'>
@@ -58,11 +59,25 @@ const ProductsTable = () => {
     const dispatch = useDispatch()
     const [selectedItem, setselectedItem] = useState(null)
    const { isOpen, onOpen, onClose } = useDisclosure()
-
+    const {order} = useSelector(state => state.order);
+    const curDate = (new Date()).toString().slice(0, 15);
     const handleCancel = (ele) => {
      setselectedItem(ele)
-     if(ele.status !== 'missing'){
+     if(order.shippling_date === curDate && ele.status !== 'missing' && order.status !== 'Approved'){
          onOpen();
+        }else if(order.status === 'Approved'){
+            alert('Can\'t update product as order already approved!')
+        }else if(order.shippling_date !== curDate){
+            alert('Can\'t update product as order shipping date has not yet arrived!')
+        }
+    }
+    const handleApproval = (ele) => {
+      if(ele.status !== 'Approved' && order.shippling_date === curDate && order.status !== 'Approved'){
+         dispatch(updateProductDetails({id: ele.id, key: 'status', value: 'Approved'}))
+        }else if(order.status === 'Approved'){
+            alert('Can\'t update product as order already approved!')
+        }else if(order.shippling_date !== curDate){
+            alert('Can\'t update product as order shipping date has not yet arrived!')
         }
     }
     return <Box h='325px'  mt='15px' >
@@ -107,11 +122,8 @@ const ProductsTable = () => {
                 {ele.status === 'missing' && <Badge variant='solid' fontSize='sm' colorScheme='red' borderRadius='full' fontWeight='500'>
                Missing
               </Badge>}
-              <Icon  _hover={{cursor: 'pointer'}} as={AiOutlineCheck} w={5} h={5} color='green.500' onClick={() => {
-                if(ele.status !== 'Approved'){
-                    dispatch(updateProductDetails({id: ele.id, key: 'status', value: 'Approved'}))
-                }}} />
-              <Icon onClick={() => handleCancel(ele)} _hover={{cursor: 'pointer'}} as={RxCross2} w={5} h={5} color='red.500' />
+              <Icon  _hover={{cursor: `${order.status !== 'Approved'?'pointer' : 'not-allowed'}`}} as={AiOutlineCheck} w={5} h={5} color='green.500' onClick={() => {handleApproval(ele)}} />
+              <Icon onClick={() => handleCancel(ele)} _hover={{cursor: `${order.status !== 'Approved'?'pointer' : 'not-allowed'}`}} as={RxCross2} w={5} h={5} color='red.500' />
               <Text _hover={{cursor: 'pointer'}} fontSize='sm' fontWeight='600'>Edit</Text>
              </Box>
         </Box>
