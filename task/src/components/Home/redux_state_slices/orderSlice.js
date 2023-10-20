@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  order: {}
+  order: {},
+  isLoading: false
 }
 
 export const orderSlice = createSlice({
@@ -21,10 +22,13 @@ export const orderSlice = createSlice({
     approveOrder: (state, {payload}) => {
       state.order.status = payload;
     },
+    updateLoading: (state, {payload}) => {
+        state.isLoading = payload;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { storeOrderDetails, updateProductDetails, approveOrder } = orderSlice.actions
+export const { storeOrderDetails, updateProductDetails, approveOrder, updateLoading } = orderSlice.actions
 
 export default orderSlice.reducer

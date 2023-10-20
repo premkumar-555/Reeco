@@ -6,7 +6,7 @@ const OrderInfo = () => {
     const {order} = useSelector(state => state.order);
   return (
     
-    <Grid mt='15px' h='100px' maxW='100%' mx='100px' templateColumns='repeat(6, 1fr)' gap={6} border='1px solid lightgrey' bg='white' borderRadius='md' py='10px' px='30px' justifyContent='center' alignItems='center'>
+    <Grid mt='15px' h='100px' maxW='100%' mx='100px' templateColumns='repeat(6, 1fr)' gap={6} border='1px solid lightgrey' bg='white' borderRadius='md' py='10px'justifyContent='flex-start' px='30px'>
     <DynamicText value={order.supplier} title='Supplier'/>
     <DynamicText value={order.shippling_date} title='Shipping date'/>
     <DynamicText value={`$ ${order.order_total}`} title='Total'/>
@@ -19,7 +19,7 @@ const OrderInfo = () => {
 
 const DynamicText = ({title, value, bdr, showIcons}) => {
 
-    return <GridItem h='100%' borderRight={`1px solid ${bdr ? bdr : "lightgrey"}`}>
+    return <GridItem h='85%' borderRight={`1px solid ${bdr ? bdr : "lightgrey"}`}>
             <Text fontSize='xs' fontWeight='bolder' color='grey' mb='4px'>{title}</Text>
             {showIcons ? <IconBox/> : <Text fontSize='md' fontWeight='bolder'>{value}</Text>}
            </GridItem>
