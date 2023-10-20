@@ -10,7 +10,7 @@ const OrderInfo = () => {
     <Grid mt='15px' h='100px' maxW='100%' mx='100px' templateColumns='repeat(6, 1fr)' gap={6} border='1px solid lightgrey' bg='white' borderRadius='md' py='10px' px='30px' justifyContent='center' alignItems='center'>
     <DynamicText value={order.supplier} title='Supplier'/>
     <DynamicText value={order.shippling_date} title='Shipping date'/>
-    <DynamicText value={order.order_total} title='Total'/>
+    <DynamicText value={`$ ${order.order_total}`} title='Total'/>
     <DynamicText value={order.order_total} title='Category' showIcons={true}/>
     <DynamicText value={order.department} title='Department'/>
     <DynamicText value={order.status}title='Status' bdr='none'/>
@@ -20,7 +20,7 @@ const OrderInfo = () => {
 
 const DynamicText = ({title, value, bdr, showIcons}) => {
 
-    return <GridItem borderRight={`1px solid ${bdr ? bdr : "lightgrey"}`}>
+    return <GridItem h='100%' borderRight={`1px solid ${bdr ? bdr : "lightgrey"}`}>
             <Text fontSize='xs' fontWeight='bolder' color='grey' mb='4px'>{title}</Text>
             {showIcons ? <IconBox/> : <Text fontSize='md' fontWeight='bolder'>{value}</Text>}
            </GridItem>

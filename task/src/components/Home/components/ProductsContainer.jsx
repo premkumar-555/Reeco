@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Box, Text, Icon , Button, Input, InputGroup, InputLeftElement , InputRightElement,Grid, GridItem   } from '@chakra-ui/react'
+import {useDisclosure } from '@chakra-ui/react'
+import {updateProductDetails} from '../redux_state_slices/orderSlice.js'
+import GlobalModal from '../components/GlobalModal'
+
+import fruitIcon from '../../../assets/Avocado Hass.jpg'
 import {
   Table,
   Thead,
@@ -51,7 +56,14 @@ const InputElement = () => {
 
 const ProductsTable = () => {
     const {products} = useSelector(state => state.order.order);
-    console.log(products)
+    const dispatch = useDispatch()
+    const [selectedItem, setselectedItem] = useState(null)
+   const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const handleCancel = (ele) => {
+     setselectedItem(ele)
+     onOpen();
+    }
     return <Box h='325px'  mt='15px' >
         <Box  border='1px solid lightgrey' borderTopRightRadius='md' borderTopLeftRadius='md' display='flex'   justifyContent='space-between' alignItems='center'  py='3px'>
             {['', 'Product name', 'Brand', 'Price', 'Quantity', 'Total', 'Status'].map((ele, ind) => (
@@ -60,15 +72,16 @@ const ProductsTable = () => {
              </Box>
             ))}
         </Box>
-        <Box h='300px' overflowY='scroll'>
+        <Box h='275px' overflowY='scroll' >
 
      {products && products.map((ele, ind) => (
+        <>
          <Box key={ele.id} h='75px' borderBottom='2px solid lightgrey' display='flex'  justifyContent='space-between' alignItems='center'>
             <Box w='8%'  display='flex' justifyContent='center'>
                 <Image
     boxSize='50px'
     objectFit='cover'
-    src='https://bit.ly/dan-abramov'
+    src={fruitIcon}
     alt='Dan Abramov'
   />
              </Box>
@@ -88,14 +101,15 @@ const ProductsTable = () => {
              <Text fontSize='sm' fontWeight='600'>{ele.price_unit}{ele.total_cost} </Text>
              </Box>
             <Box  w='25%' h='100%' border='1px solid none' bg='whitesmoke' display='flex' alignItems='center' justifyContent='flex-end' pr='15px' gap={4}>
-              <Icon _hover={{cursor: 'pointer'}} as={AiOutlineCheck} w={5} h={5} color='green.500' />
-              <Icon _hover={{cursor: 'pointer'}} as={RxCross2} w={5} h={5} color='red.500' />
+              <Icon onClick={() => dispatch(updateProductDetails({id: ele.id, key: 'status', value: 'Approved'}))} _hover={{cursor: 'pointer'}} as={AiOutlineCheck} w={5} h={5} color='green.500' />
+              <Icon onClick={() => handleCancel(ele)} _hover={{cursor: 'pointer'}} as={RxCross2} w={5} h={5} color='red.500' />
               <Text _hover={{cursor: 'pointer'}} fontSize='sm' fontWeight='600'>Edit</Text>
              </Box>
         </Box>
+        </>
      ))}
+     <GlobalModal  isOpen={isOpen} onOpen={onOpen} onClose={onClose} item={selectedItem}/>
         </Box>
-        
         
 
     </Box>

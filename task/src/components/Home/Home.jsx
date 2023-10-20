@@ -30,7 +30,7 @@ const Home = () => {
     }, [])
     
   return (
-    <Box w='100vw' h='auto' bg='whitesmoke' border='1px solid black'>
+    <Box w='100vw' h='auto' bg='whitesmoke'>
      <NavBar />
      <OrderHeader />
      <OrderInfo />
