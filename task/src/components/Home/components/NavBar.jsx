@@ -5,8 +5,8 @@ import {GoChevronDown} from 'react-icons/go'
 import {TfiShoppingCart} from 'react-icons/tfi'
 const NavBar = () => {
   return (
-    <Box display='flex' justifyContent='space-between' alignItems='center' w='100%' bg='#1B5E20' h='50px' px='100px'>
-    <Box w='30%'  display='flex' justifyContent='space-between' alignItems='center' border='1px solid none'>
+    <Box display='flex' justifyContent='space-between' alignItems='center' w='100%' bg='#1B5E20' h='50px' px='100px' >
+    <Box w='30%'  display='flex' justifyContent='space-between' alignItems='center' border='1px solid none' >
         <Box >
         <Text fontSize='24px' color='white' fontWeight='bold' >Reeco</Text>
         </Box>
@@ -18,7 +18,7 @@ const NavBar = () => {
         
     </Box>
     <Box w='13%' display='flex' justifyContent='space-between' alignItems='center' border='1px solid none'>
-        <Box  position='relative' border='1px solid none' p='0' pb='5px'>
+        <Box  position='relative' border='1px solid none' p='0' pb='8px'>
         <Circle position='relative' top='14px' left='-8px' size='17px' bg='#00C853' color='white'>
            <Text fontSize='10px' color='whitesmoke' fontWeight='600' >12</Text>
         </Circle>
