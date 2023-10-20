@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Box, Text, Icon , Button, Input, InputGroup, InputLeftElement , InputRightElement,Grid, GridItem   } from '@chakra-ui/react'
+import { Box, Text, Icon , Button, Input, InputGroup, InputLeftElement , InputRightElement,Grid, GridItem, Badge   } from '@chakra-ui/react'
 import {useDisclosure } from '@chakra-ui/react'
 import {updateProductDetails} from '../redux_state_slices/orderSlice.js'
 import GlobalModal from '../components/GlobalModal'
@@ -62,7 +62,9 @@ const ProductsTable = () => {
 
     const handleCancel = (ele) => {
      setselectedItem(ele)
-     onOpen();
+     if(ele.status !== 'missing'){
+         onOpen();
+        }
     }
     return <Box h='325px'  mt='15px' >
         <Box  border='1px solid lightgrey' borderTopRightRadius='md' borderTopLeftRadius='md' display='flex'   justifyContent='space-between' alignItems='center'  py='3px'>
@@ -101,7 +103,15 @@ const ProductsTable = () => {
              <Text fontSize='sm' fontWeight='600'>{ele.price_unit}{ele.total_cost} </Text>
              </Box>
             <Box  w='25%' h='100%' border='1px solid none' bg='whitesmoke' display='flex' alignItems='center' justifyContent='flex-end' pr='15px' gap={4}>
-              <Icon onClick={() => dispatch(updateProductDetails({id: ele.id, key: 'status', value: 'Approved'}))} _hover={{cursor: 'pointer'}} as={AiOutlineCheck} w={5} h={5} color='green.500' />
+                {ele.status === 'Approved' && <Badge transition='0.5s all' variant='solid' colorScheme='green' borderRadius='full' fontSize='sm' fontWeight='500'>
+                Approved</Badge> }
+                {ele.status === 'missing' && <Badge variant='solid' fontSize='sm' colorScheme='red' borderRadius='full' fontWeight='500'>
+               Missing
+              </Badge>}
+              <Icon  _hover={{cursor: 'pointer'}} as={AiOutlineCheck} w={5} h={5} color='green.500' onClick={() => {
+                if(ele.status !== 'Approved'){
+                    dispatch(updateProductDetails({id: ele.id, key: 'status', value: 'Approved'}))
+                }}} />
               <Icon onClick={() => handleCancel(ele)} _hover={{cursor: 'pointer'}} as={RxCross2} w={5} h={5} color='red.500' />
               <Text _hover={{cursor: 'pointer'}} fontSize='sm' fontWeight='600'>Edit</Text>
              </Box>
