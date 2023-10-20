@@ -4,7 +4,6 @@ import {IoFastFoodOutline} from 'react-icons/io5'
 import { useSelector, useDispatch } from 'react-redux'
 const OrderInfo = () => {
     const {order} = useSelector(state => state.order);
-    console.log(order)
   return (
     
     <Grid mt='15px' h='100px' maxW='100%' mx='100px' templateColumns='repeat(6, 1fr)' gap={6} border='1px solid lightgrey' bg='white' borderRadius='md' py='10px' px='30px' justifyContent='center' alignItems='center'>

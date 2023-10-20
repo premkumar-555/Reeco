@@ -13,11 +13,9 @@ const OrderHeader = () => {
  const dispatch = useDispatch();
  const {order} = useSelector((state) =>(state.order)) 
  const handleApprove = () => {
-    console.log(order)
   const curDate = (new Date()).toString().slice(0, 15);
   if(order.shippling_date === curDate && order.status.includes('awaiting your approvel')){
     dispatch(approveOrder('awaiting your approvel'));
-    console.log(order);
     <Alert status='success'>
     <AlertIcon />
     Order has been approved

@@ -24,7 +24,6 @@ import {RxCross2} from 'react-icons/rx'
 import {AiOutlineCheck} from 'react-icons/ai'
 const ProductsContainer = () => {
     const {products} = useSelector(state => state.order.order);
-    console.log(products)
   return (
     <Box h='375px' mt='15px'  maxW='100%' mx='100px' borderRadius='md' border='1px solid lightgrey' bg='white' py='10px' px='30px'>
     <Box display='flex' justifyContent='space-between'>
