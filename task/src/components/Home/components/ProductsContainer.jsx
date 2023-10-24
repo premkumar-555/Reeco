@@ -26,7 +26,7 @@ const ProductsContainer = () => {
     const {products} = useSelector(state => state.order.order);
    
   return (
-    <Box h='375px' mt='15px'  maxW='100%' mx='100px' borderRadius='md' border='1px solid lightgrey' bg='white' py='10px' px='30px'>
+    <Box h='400px' mt='15px'  maxW='100%' mx='100px' borderRadius='md' border='1px solid lightgrey' bg='white' py='10px' px='30px'>
     <Box display='flex' justifyContent='space-between'>
         <InputElement />
     <Box display='flex' gap={7} alignItems='center'>
